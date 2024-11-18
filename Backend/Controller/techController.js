@@ -56,6 +56,7 @@ const assingToTicketTechSupport  = async (req, res) =>{
       return res.status(404).json({ message: 'Ticket not found' });
     }
 
+    console.log(ticket)
     // Assign the ticket to the tech support user
     ticket.assignedTo = techSupportId;
     await ticket.save();
