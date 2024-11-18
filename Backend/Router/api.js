@@ -7,7 +7,7 @@ const router = express.Router();
 // UserAuthe Api 
 router.post('/registerUser', userController.registerUser);
 router.post('/loginUser', userController.loginUser);
-
+router.get('/getAllTechSupport', userController.getAllTechSuportUser);
 // Api For Tech Creation 
 router.post('/create' ,authenticate,techController.createTicket );
 router.post('/assing', authenticate , techController.assingToTicketTechSupport);

@@ -73,3 +73,19 @@ exports.loginUser = async(req,res)=>{
         res.status(500).json({ message: 'Server error' });
       }
 };
+
+exports.getAllTechSuportUser = async(req,res)=>{
+  try {
+    // Find all users with the role of 'Tech Support'
+    const techSupportUsers = await User.find({ role: 'Tech Support' });
+
+    if (!techSupportUsers.length) {
+      return res.status(404).json({ message: 'No Tech Support users found' });
+    }
+
+    res.status(200).json({ users: techSupportUsers });
+  } catch (error) {
+    console.error('Error fetching Tech Support users:', error.message);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
