@@ -14,4 +14,7 @@ router.post('/assing', authenticate , techController.assingToTicketTechSupport);
 router.get('/getAllTickets', authenticate, techController.getAllTickets);
 router.put('/updateStatus', authenticate, techController.upadateTicketStatus);
 router.get('/assignedTickets' , authenticate , techController.getAssignedTickets);
+router.delete ('/delete/:ticketId', techController.deleteTicket);
+
+
 module.exports = router;

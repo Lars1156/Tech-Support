@@ -110,11 +110,30 @@ const upadateTicketStatus =  async(req, res) =>{
     console.error('Error updating ticket status:', error.message);
     res.status(500).json({ message: 'Server Error' });
   }
-}
+};
+const deleteTicket = async (req, res) => {
+  try {
+    const { ticketId } = req.params;
+
+    // Find and delete the ticket
+    const ticket = await Ticket.findByIdAndDelete(ticketId);
+    
+    if (!ticket) {
+      return res.status(404).json({ message: 'Ticket not found' });
+    }
+
+    res.status(200).json({ message: 'Ticket successfully deleted', ticket });
+  } catch (error) {
+    console.error('Error deleting ticket:', error.message);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 module.exports = {
   createTicket,
   getAllTickets,
   assingToTicketTechSupport,
   getAssignedTickets,
-  upadateTicketStatus
+  upadateTicketStatus,
+  deleteTicket
 };
